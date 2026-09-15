@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AlphaTV</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0b0f;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      border-bottom: 1px solid #202027;
+      background: #0b0b0f;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      opacity: 0.65;
+    }
+
+    main {
+      padding: 50px 5%;
+    }
+
+    .hero {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        #181820 0%,
+        #0f0f14 100%
+      );
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #bdbdc7;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-top: 45px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .empty {
+      padding: 30px;
+      border: 1px solid #24242d;
+      border-radius: 12px;
+      color: #9999a5;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      main {
+        padding: 25px 4%;
+      }
+
+      .hero {
+        min-height: 360px;
+        padding: 25px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      Alpha<span>TV</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Bem-vindo ao AlphaTV</h1>
+
+        <p>
+          Seu entretenimento em um só lugar.
+          Estamos preparando uma nova experiência para você.
+        </p>
+
+        <a href="#" class="button">Explorar</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Continuar assistindo</h2>
+
+      <div class="empty">
+        Seu histórico aparecerá aqui.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Filmes</h2>
+
+      <div class="empty">
+        Carregando catálogo...
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
