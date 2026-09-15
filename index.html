@@ -32,9 +32,177 @@
     .logo {
       font-size: 28px;
       font-weight: 800;
-      letter-spacing: -1px;
     }
 
+    .logo span {
+      opacity: 0.6;
+    }
+
+    main {
+      padding: 40px 5%;
+    }
+
+    .hero {
+      min-height: 400px;
+      padding: 40px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #191920, #0e0e13);
+    }
+
+    .content {
+      max-width: 650px;
+    }
+
+    .content h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      margin-bottom: 15px;
+    }
+
+    .content p {
+      color: #bdbdc7;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .info {
+      color: #8f8f9b;
+      margin-bottom: 25px;
+    }
+
+    .status {
+      padding: 25px;
+      border: 1px solid #24242d;
+      border-radius: 12px;
+      color: #aaa;
+    }
+
+    .error {
+      color: #ff7777;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      main {
+        padding: 25px 4%;
+      }
+
+      .hero {
+        min-height: 360px;
+        padding: 25px;
+      }
+
+      .content p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      Alpha<span>TV</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <div class="content">
+
+        <div id="status" class="status">
+          Carregando conteúdo...
+        </div>
+
+        <h1 id="titulo" style="display:none;"></h1>
+
+        <p id="descricao" style="display:none;"></p>
+
+        <p id="info" class="info" style="display:none;"></p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script type="module">
+
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      get
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+    import { firebaseConfig }
+      from "./firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(app);
+
+    const filmeRef = ref(database, "filmes/001");
+
+    const status = document.getElementById("status");
+    const titulo = document.getElementById("titulo");
+    const descricao = document.getElementById("descricao");
+    const info = document.getElementById("info");
+
+    get(filmeRef)
+      .then((snapshot) => {
+
+        if (!snapshot.exists()) {
+          status.textContent = "Filme não encontrado.";
+          return;
+        }
+
+        const filme = snapshot.val();
+
+        status.style.display = "none";
+
+        titulo.textContent = filme.titulo || "Sem título";
+        titulo.style.display = "block";
+
+        descricao.textContent =
+          filme.descricao || "Sem descrição disponível.";
+        descricao.style.display = "block";
+
+        info.textContent =
+          `${filme.genero || "Sem gênero"} • ${filme.ano || "Ano não informado"}`;
+
+        info.style.display = "block";
+
+      })
+      .catch((error) => {
+
+        console.error(error);
+
+        status.classList.add("error");
+
+        status.textContent =
+          "Não foi possível carregar o conteúdo.";
+
+      });
+
+  </script>
+
+</body>
+</html>
     .logo span {
       opacity: 0.65;
     }
